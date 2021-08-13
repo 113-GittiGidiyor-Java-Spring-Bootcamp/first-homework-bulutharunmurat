@@ -101,5 +101,14 @@ public class StudentService implements CrudRepository<Student>, StudentRepositor
             EntityManagerUtils.closeEntityManager(em);
         }
     }
+
+    @Override
+    public List<Course> findCoursesofStudent(int id) {
+        return findStudentById(id).getCourseList();
+    }
+
+    public Student findStudentById(int id){
+        return em.createQuery("from Student s where s.id=:id", Student.class).setParameter("id", id).getSingleResult();
+    }
 }
 

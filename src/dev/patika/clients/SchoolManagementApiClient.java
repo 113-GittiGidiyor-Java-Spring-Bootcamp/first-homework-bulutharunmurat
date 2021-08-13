@@ -49,6 +49,8 @@ public class SchoolManagementApiClient {
 //
 //        controller.updateStudent(UpdateStudent,2);
 
+        System.out.println(controller.findCoursesofStudent(1));
+
     }
 
     private static int checkTestData() {

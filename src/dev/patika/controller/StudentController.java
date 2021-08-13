@@ -34,8 +34,9 @@ public class StudentController {
         studentService.updateOnDatabase(student, id);
     }
 
-    public List<Course> findCoursesofStudent(long id){
-        return null;
+    public List<Course> findCoursesofStudent(int id){
+
+       return studentService.findCoursesofStudent(id);
     }
 
 }
