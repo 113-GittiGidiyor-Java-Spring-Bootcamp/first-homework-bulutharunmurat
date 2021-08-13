@@ -29,24 +29,24 @@ public class SchoolManagementApiClient {
 
     private static void saveTestData() {
 
-        Student student1 = new Student("Murat", "Istanbul",
-                LocalDate.of(2021, Month.AUGUST,12), 'M');
-        Student student2 = new Student("Harun", "Istanbul",
-                LocalDate.of(2021, Month.AUGUST,12), 'M');
-        Student student3 = new Student("Bulut", "Istanbul",
-                LocalDate.of(2021, Month.AUGUST,12), 'M');
+        Student student1 = new Student("Harun Murat Bulut", "Istanbul",
+                LocalDate.of(1994, Month.MAY,04), "Male");
+        Student student2 = new Student("Dilara Demir", "Istanbul",
+                LocalDate.of(2000, Month.AUGUST,12), "Female");
+        Student student3 = new Student("Tolga", "Istanbul",
+                LocalDate.of(2001, Month.AUGUST,18), "Male");
 
         Instructor pi1 = new PermanentInstructor("Veli", "Ankara",
-                "05552022222", 1000.0F);
+                "05552022222", 3000.0F);
         Instructor pi2 = new PermanentInstructor("Mehmet Demir", "Bursa",
-                "05524456632", 1000.0F);
+                "05524456632", 2525.0F);
 
 
-        Instructor vr1 = new VisitingResearcher("Mehmet", "Bursa",
-                "05524456632", 1000.0F);
+        Instructor vr1 = new VisitingResearcher("Cenk", "İzmir",
+                "05524456632", 4000.0F);
 
-        Course c1 = new Course("MATH", 101, 5);
-        Course c2 = new Course("CS", 101, 5);
+        Course c1 = new Course("CALCULUS", "MAT101", 5.0F);
+        Course c2 = new Course("INTRODUCTION TO COMPUTER SCIENCE", "CS101", 4.0F);
 
         c1.setInstructor(pi1);
         c2.setInstructor(vr1);

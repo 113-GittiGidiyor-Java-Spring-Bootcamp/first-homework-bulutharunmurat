@@ -14,7 +14,7 @@ public class Student {
     private String name;
     private String address;
     private LocalDate birthDate;
-    private Character gender;
+    private String gender;
 
     public List<Course> getCourseList() {
         return courseList;
@@ -29,7 +29,7 @@ public class Student {
     @ManyToMany
     private List<Course> courseList = new ArrayList<>();
 
-    public Student(String name, String address, LocalDate birthDate, Character gender) {
+    public Student(String name, String address, LocalDate birthDate, String gender) {
         this.name = name;
         this.address = address;
         this.birthDate = birthDate;
@@ -63,11 +63,11 @@ public class Student {
         this.birthDate = birthDate;
     }
 
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

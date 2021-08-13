@@ -11,8 +11,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Integer code;
-    private Integer creditScore;
+    private String code;
+    private Float creditScore;
 
     @ManyToMany(mappedBy = "courseList")
     private List<Student> studentList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Course {
         this.instructor = instructor;
     }
 
-    public Course(String name, Integer code, Integer creditScore) {
+    public Course(String name, String code, Float creditScore) {
         this.name = name;
         this.code = code;
         this.creditScore = creditScore;
@@ -50,19 +50,19 @@ public class Course {
         this.name = name;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public Integer getCreditScore() {
+    public Float getCreditScore() {
         return creditScore;
     }
 
-    public void setCreditScore(Integer creditScore) {
+    public void setCreditScore(Float creditScore) {
         this.creditScore = creditScore;
     }
 
