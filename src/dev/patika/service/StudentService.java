@@ -1,13 +1,14 @@
 package dev.patika.service;
 
-import dev.patika.models.Student;
+import dev.patika.models.*;
+import dev.patika.repository.StudentRepository;
+import dev.patika.utils.*;
 import dev.patika.repository.CrudRepository;
-import dev.patika.utils.EntityManagerUtils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class StudentService implements CrudRepository<Student> {
+public class StudentService implements CrudRepository<Student>, StudentRepository {
 
     EntityManager em = EntityManagerUtils.getEntityManager("mysqlPU");
 
@@ -41,6 +42,16 @@ public class StudentService implements CrudRepository<Student> {
     @Override
     public void deleteFromDatabase(int id) {
 
+    }
+
+    public void deleteStudentFromDatabase(int id) {
+        em.getTransaction().begin();
+
+        Student student = em.createQuery("from Student s WHERE s.id =:id", Student.class).setParameter("id", id).getSingleResult();
+
+        em.remove(student);
+
+        em.getTransaction().commit();
     }
 
     @Override

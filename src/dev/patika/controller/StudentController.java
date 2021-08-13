@@ -1,8 +1,7 @@
 package dev.patika.controller;
 
-import dev.patika.models.Course;
-import dev.patika.models.Student;
-import dev.patika.service.StudentService;
+import dev.patika.models.*;
+import dev.patika.service.*;
 
 import java.util.List;
 
@@ -22,6 +21,11 @@ public class StudentController {
 
         studentService.saveToDatabase(student);
     }
+
+    public void deleteStudent(int id){
+        studentService.deleteStudentFromDatabase(id);
+    }
+
 
     public List<Course> findCoursesofStudent(long id){
         return null;

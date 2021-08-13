@@ -1,9 +1,9 @@
 package dev.patika.clients;
 
-import dev.patika.controller.StudentController;
+import dev.patika.controller.*;
 import dev.patika.models.*;
 import dev.patika.models.*;
-import dev.patika.utils.EntityManagerUtils;
+import dev.patika.utils.*;
 
 import javax.persistence.EntityManager;
 import javax.xml.transform.sax.SAXResult;
@@ -15,11 +15,11 @@ public class SchoolManagementApiClient {
     public static void main(String[] args) {
         //saveTestData();
         StudentController controller = new StudentController();
-        Student student4 = new Student("messi", "Istanbul",
-                LocalDate.of(2021, Month.AUGUST,12), 'M');
+        //Student student4 = new Student("messi", "Istanbul",
+                //LocalDate.of(2021, Month.AUGUST,12), 'M');
 
-        controller.saveStudent(student4);
-
+        //controller.saveStudent(student4);
+        controller.deleteStudent(2);
         List<Student> returnedList = new StudentController().findAllStudent();
 
         for (Student student : returnedList) {
