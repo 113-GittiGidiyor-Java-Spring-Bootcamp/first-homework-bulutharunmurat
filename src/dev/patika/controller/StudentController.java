@@ -2,6 +2,7 @@ package dev.patika.controller;
 
 import dev.patika.models.*;
 import dev.patika.service.*;
+import dev.patika.repository.*;
 
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class StudentController {
         studentService.deleteStudentFromDatabase(id);
     }
 
+    public void updateStudent(Student student, int id){
+        studentService.updateOnDatabase(student, id);
+    }
 
     public List<Course> findCoursesofStudent(long id){
         return null;

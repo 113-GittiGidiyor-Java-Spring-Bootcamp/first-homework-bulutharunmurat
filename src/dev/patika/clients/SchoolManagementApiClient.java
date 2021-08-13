@@ -33,7 +33,7 @@ public class SchoolManagementApiClient {
 
         // Test deleteFromDatabase for Student
 
-        controller.deleteFromDatabase(3);
+        //controller.deleteFromDatabase(3);
 
 
         // Test for finding all Students in database
@@ -43,6 +43,11 @@ public class SchoolManagementApiClient {
             System.out.println(student);
         }
 
+        // Test for updateStudent function
+//        Student UpdateStudent = new Student("Dilara Demir", "Istanbul",
+//                LocalDate.of(2000, Month.AUGUST,12), "Female");
+//
+//        controller.updateStudent(UpdateStudent,2);
 
     }
 

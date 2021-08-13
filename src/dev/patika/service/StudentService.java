@@ -14,11 +14,13 @@ public class StudentService implements CrudRepository<Student>, StudentRepositor
 
     @Override
     public List<Student> findAll() {
+
         return em.createQuery("from Student", Student.class).getResultList();
     }
 
     @Override
     public Student findById(int id) {
+
         return  em.find(Student.class, id);
     }
 
@@ -82,7 +84,22 @@ public class StudentService implements CrudRepository<Student>, StudentRepositor
 
     @Override
     public void updateOnDatabase(Student object, int id) {
+        try {
+            em.getTransaction().begin();
 
+            Student foundStudent = em.find(Student.class, id);
+            foundStudent.setName(object.getName());
+            foundStudent.setAddress(object.getAddress());
+            foundStudent.setBirthDate(object.getBirthDate());
+            foundStudent.setGender(object.getGender());
+            em.merge(foundStudent);
+
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            EntityManagerUtils.closeEntityManager(em);
+        }
     }
 }
 
