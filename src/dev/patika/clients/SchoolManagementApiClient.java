@@ -13,18 +13,42 @@ import java.util.List;
 
 public class SchoolManagementApiClient {
     public static void main(String[] args) {
-        saveTestData();
+
+        if(checkTestData() == 0){
+
+            // makes control if database exist or not, if not it would create database
+            saveTestData();
+        }
+
         StudentController controller = new StudentController();
         //Student student4 = new Student("messi", "Istanbul",
                 //LocalDate.of(2021, Month.AUGUST,12), 'M');
 
+
+        // Test for adding new Student to database
         //controller.saveStudent(student4);
+
+        // Test for delete Student from database with auto-generated id
         //controller.deleteStudent(2);
+
+        // Test deleteFromDatabase for Student
+
+        controller.deleteFromDatabase(3);
+
+
+        // Test for finding all Students in database
         List<Student> returnedList = new StudentController().findAllStudent();
 
         for (Student student : returnedList) {
             System.out.println(student);
         }
+
+
+    }
+
+    private static int checkTestData() {
+        EntityManager em = EntityManagerUtils.getEntityManager("mysqlPU");
+        return em.createQuery("from Course", Course.class).getResultList().size();
     }
 
     private static void saveTestData() {

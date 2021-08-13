@@ -25,22 +25,48 @@ public class StudentService implements CrudRepository<Student>, StudentRepositor
     @Override
     public void saveToDatabase(Student object) {
 
-        em.getTransaction().begin();
-
-        em.persist(object);
-
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.persist(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            EntityManagerUtils.closeEntityManager(em);
+        }
 
 
     }
 
     @Override
     public void deleteFromDatabase(Student object) {
-
+        try {
+            em.getTransaction().begin();
+            Student foundStudent = em.createQuery("from Student s WHERE s.id =:id", Student.class).setParameter
+                    ("id", object.getId()).getSingleResult();
+            em.remove(foundStudent);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            EntityManagerUtils.closeEntityManager(em);
+        }
     }
 
     @Override
     public void deleteFromDatabase(int id) {
+        try {
+            em.getTransaction().begin();
+
+            Student foundStudent = em.find(Student.class, id);
+            em.remove(foundStudent);
+
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            EntityManagerUtils.closeEntityManager(em);
+        }
 
     }
 

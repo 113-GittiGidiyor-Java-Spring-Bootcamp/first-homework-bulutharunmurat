@@ -42,6 +42,9 @@ public class Course {
         this.creditScore = creditScore;
     }
 
+    public Course() {
+    }
+
     public String getName() {
         return name;
     }

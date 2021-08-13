@@ -24,7 +24,13 @@ public class Student {
         this.courseList = courseList;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @ManyToMany
     private List<Course> courseList = new ArrayList<>();

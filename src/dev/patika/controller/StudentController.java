@@ -22,6 +22,9 @@ public class StudentController {
         studentService.saveToDatabase(student);
     }
 
+    public void deleteFromDatabase(int id){
+        studentService.deleteFromDatabase(id);
+    }
     public void deleteStudent(int id){
         studentService.deleteStudentFromDatabase(id);
     }
