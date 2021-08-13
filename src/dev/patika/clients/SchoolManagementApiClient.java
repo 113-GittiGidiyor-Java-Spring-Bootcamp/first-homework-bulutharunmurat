@@ -13,13 +13,13 @@ import java.util.List;
 
 public class SchoolManagementApiClient {
     public static void main(String[] args) {
-        //saveTestData();
+        saveTestData();
         StudentController controller = new StudentController();
         //Student student4 = new Student("messi", "Istanbul",
                 //LocalDate.of(2021, Month.AUGUST,12), 'M');
 
         //controller.saveStudent(student4);
-        controller.deleteStudent(2);
+        //controller.deleteStudent(2);
         List<Student> returnedList = new StudentController().findAllStudent();
 
         for (Student student : returnedList) {
